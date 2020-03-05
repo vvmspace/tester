@@ -5,11 +5,14 @@ const url = 'https://www.youtube.com/watch?v=yUl4d5am5yY';
 const puppeteer = require('puppeteer');
 const axios = require('axios');
 const cliProgress = require('cli-progress');
-const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classi
-ent/top').catch(e => e);
+const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+// start the progress bar with a total value of 200 and start value of 0
 
-    n++;
-    const browser = await puppeteer.launch({
+async function helloWorld() {
+
+  const {data: {events:top}} = await axios.get('https://api.concert.moscow/api/v1/event/top').catch(e => e); 
+
+  const browser = await puppeteer.launch({
         headless: true,
     });
 
